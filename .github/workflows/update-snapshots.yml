@@ -1,0 +1,32 @@
+name: Update Visual Snapshots
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-snapshots:
+    runs-on: ubuntu-22.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.60.0-jammy
+      options: --ipc=host
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Update snapshots
+        run: npx playwright test tests/visual.spec.cjs --project=chromium --update-snapshots
+        env:
+          CI: true
+
+      - name: Commit updated snapshots
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add tests/visual.spec.cjs-snapshots/
+          git diff --staged --quiet || git commit -m "test(visual): update baseline snapshots (Docker chromium linux)"
+          git push
