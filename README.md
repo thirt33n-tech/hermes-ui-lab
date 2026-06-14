@@ -1,5 +1,55 @@
 # Hermes UI Lab
 
+## CI 構成
+
+```
+push / pull_request (main)
+│
+├── test          Playwright E2E（Chromium・Firefox・WebKit）
+│   ├── coverage  カバレッジレポート生成
+│   └── artifacts playwright-report / test-results / coverage
+│
+├── bundle-size   npm run build:prod → npm run size（250 kB 超過で CI 失敗）
+│
+├── lighthouse    Lighthouse CI（パフォーマンス・アクセシビリティ計測）
+│
+└── analyze       CodeQL 静的解析（JavaScript/TypeScript）
+                  ※ weekly schedule（毎週月曜 02:00 UTC）でも実行
+```
+
+## 品質監視
+
+### Dependabot
+
+毎週月曜日に npm パッケージと GitHub Actions の更新 PR を自動作成する（最大 5 件/エコシステム）。
+
+- 対象: `npm` / `github-actions`
+- スケジュール: 毎週月曜
+- ターゲットブランチ: `main`
+
+### CodeQL
+
+GitHub 公式の静的解析ツール。JavaScript/TypeScript のセキュリティ脆弱性を検出する。
+
+- トリガー: `push(main)` / `pull_request(main)` / 毎週月曜 02:00 UTC
+- 結果は GitHub Security タブ → Code scanning alerts に表示される。
+
+### Bundle Size
+
+ビルド成果物 (`dist/assets/*.js`) のサイズを CI で自動計測する。
+
+| 対象 | 上限 |
+|---|---|
+| `dist/assets/*.js` | 250 kB |
+
+上限超過時は CI が失敗する。閾値変更は `package.json` の `bundlesize` 設定を編集する。
+
+```bash
+npm run size   # ローカルで計測（要 npm run build:prod）
+```
+
+---
+
 ## E2E Testing
 
 | Script | Description |
