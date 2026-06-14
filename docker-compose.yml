@@ -1,4 +1,7 @@
 services:
   e2e:
     build: .
-    command: npx playwright test
+    container_name: hermes-ui-lab
+    environment:
+      - CI=true
+    command: npm run test:e2e

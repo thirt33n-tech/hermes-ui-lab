@@ -16,6 +16,12 @@ dist-ssr
 playwright-report/
 test-results/
 
+# Lighthouse
+.lighthouseci/
+
+# Coverage
+coverage/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

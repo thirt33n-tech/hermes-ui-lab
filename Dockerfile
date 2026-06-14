@@ -7,4 +7,4 @@ RUN npm ci
 
 COPY . .
 
-CMD ["npx", "playwright", "test"]
+CMD ["npm", "run", "test:e2e"]
