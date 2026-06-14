@@ -16,7 +16,7 @@ function App() {
         <button onClick={() => i18n.changeLanguage('en')}>EN</button>
       </nav>
 
-      <section id="center">
+      <main id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
           <img src={reactLogo} className="framework" alt="React logo" />
@@ -34,11 +34,11 @@ function App() {
         >
           {t('counter')} {count}
         </button>
-      </section>
+      </main>
 
       <div className="ticks"></div>
 
-      <section id="next-steps">
+      <section id="next-steps" aria-label="Resources">
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#documentation-icon"></use>
