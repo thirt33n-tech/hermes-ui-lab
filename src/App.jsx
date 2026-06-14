@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -6,9 +7,15 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const { t, i18n } = useTranslation()
 
   return (
     <>
+      <nav style={{ position: 'fixed', top: '1rem', right: '1rem', display: 'flex', gap: '0.5rem', zIndex: 100 }}>
+        <button onClick={() => i18n.changeLanguage('ja')}>JA</button>
+        <button onClick={() => i18n.changeLanguage('en')}>EN</button>
+      </nav>
+
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -16,8 +23,8 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Hermes UI ラボ</h1>
-          <p>これはE2Eテスト用の日本語表示です</p>
+          <h1>{t('title')}</h1>
+          <p>{t('description')}</p>
         </div>
         <button
           type="button"
@@ -25,7 +32,7 @@ function App() {
           data-testid="counter-button"
           onClick={() => setCount((count) => count + 1)}
         >
-          カウントアップ {count}
+          {t('counter')} {count}
         </button>
       </section>
 
@@ -62,11 +69,7 @@ function App() {
           <ul>
             <li>
               <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#github-icon"></use>
                 </svg>
                 GitHub
@@ -74,11 +77,7 @@ function App() {
             </li>
             <li>
               <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#discord-icon"></use>
                 </svg>
                 Discord
@@ -86,11 +85,7 @@ function App() {
             </li>
             <li>
               <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#x-icon"></use>
                 </svg>
                 X.com
@@ -98,11 +93,7 @@ function App() {
             </li>
             <li>
               <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
+                <svg className="button-icon" role="presentation" aria-hidden="true">
                   <use href="/icons.svg#bluesky-icon"></use>
                 </svg>
                 Bluesky

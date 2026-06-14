@@ -9,11 +9,15 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test:e2e": "playwright test",
-    "test:e2e:analyze": "node scripts/analyze-failure.js"
+    "test:e2e:analyze": "node scripts/analyze-failure.js",
+    "test:e2e:visual-diff": "node scripts/analyze-visual-diff.js"
   },
   "dependencies": {
+    "i18next": "^26.3.1",
+    "i18next-browser-languagedetector": "^8.2.1",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "react-i18next": "^17.0.8"
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.104.1",
