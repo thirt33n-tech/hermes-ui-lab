@@ -16,17 +16,16 @@ function App() {
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
+          <h1>Hermes UI ラボ</h1>
+          <p>これはE2Eテスト用の日本語表示です</p>
         </div>
         <button
           type="button"
           className="counter"
+          data-testid="counter-button"
           onClick={() => setCount((count) => count + 1)}
         >
-          Count is {count}
+          カウントアップ {count}
         </button>
       </section>
 

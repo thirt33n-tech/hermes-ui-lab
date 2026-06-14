@@ -1,0 +1,4 @@
+services:
+  e2e:
+    build: .
+    command: npx playwright test
