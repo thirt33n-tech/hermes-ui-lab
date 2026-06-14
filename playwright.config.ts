@@ -4,12 +4,21 @@ import { baseConfig } from './packages/e2e-core/playwright.config.base';
 export default defineConfig({
   testDir: './tests',
   ...baseConfig,
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.03,
+      threshold: 0.2,
+      animations: 'disabled',
+    },
+  },
   use: {
     ...baseConfig.use,
     baseURL: 'http://localhost:5173',
     timezoneId: 'Asia/Tokyo',
     locale: 'ja-JP',
-    viewport: { width: 1280, height: 720 },
+    viewport: { width: 1280, height: 742 },
+    deviceScaleFactor: 1,
+    hasTouch: false,
     animations: 'disabled',
   },
   reporter: [
