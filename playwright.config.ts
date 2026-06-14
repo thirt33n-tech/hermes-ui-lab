@@ -9,6 +9,8 @@ export default defineConfig({
     baseURL: 'http://localhost:5173',
     timezoneId: 'Asia/Tokyo',
     locale: 'ja-JP',
+    viewport: { width: 1280, height: 720 },
+    animations: 'disabled',
   },
   reporter: [
     ['html'],
