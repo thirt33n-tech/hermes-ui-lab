@@ -40,7 +40,7 @@
     "@playwright/test": "^1.60.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@vitejs/plugin-react": "^6.0.3",
     "bundlesize": "^0.18.2",
     "c8": "^11.0.0",
     "eslint": "^10.3.0",
